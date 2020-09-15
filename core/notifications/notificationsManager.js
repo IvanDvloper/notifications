@@ -14,6 +14,20 @@ var controller = {
                 }
             },
         });
+    },
+
+    publicNotificationCustom: (tittle, body, deep_ling) => {
+
+        beamsClient.publishToInterests(['ethernet-status'], {
+            web: {
+                notification: {
+                    title: tittle,
+                    body: body,
+                    deep_link: ""+deep_ling,
+                }
+            },
+        });
     }
+
 };
 module.exports = controller;

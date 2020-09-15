@@ -1,4 +1,6 @@
 var routes = require('./core/routes');
+var notificationsRoutes = require('./core/routes/notifications.routes');
+var bodyParser = require('body-parser');
 var mongooseConnection = require('./mongoose/conection')
 var notificationsManager = require('./core/notifications/notificationsManager');
 var bodyParser = require('body-parser');
@@ -10,6 +12,8 @@ const io = require('socket.io')(http);
 const socketManager = require('./core/socket/socketManager');
 const port = process.env.PORT || 3450;
 
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -19,9 +23,8 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
 app.use(routes);
+app.use('/notifications', notificationsRoutes);
 
 io.on('connection', socketManager.connection);
 
