@@ -3,8 +3,6 @@ var LogModel = require('../mongoose/models/logModel');
 var controller =
     {
         index: (req, res) => {
-
-
             LogModel.find({}).limit(20).sort({eventDate: -1}).exec((err, succ) => {
                 if (err) {
                     res.status(404).json({"status": "error", "data": "no logs yet"});

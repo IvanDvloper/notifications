@@ -12,7 +12,8 @@ var controller =
             var title = req.body.title;
             var content = req.body.content;
             var deep_link = req.body.deep_link;
-            notificationManager.publicNotificationCustom(title, content, deep_link);
+            var interest =req.body.interest;
+            notificationManager.publicNotificationCustom(title, content, deep_link,interest);
             return res.status(200).json({"status": "ok", "data": "notification ok"});
         }
     };

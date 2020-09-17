@@ -16,14 +16,14 @@ var controller = {
         });
     },
 
-    publicNotificationCustom: (tittle, body, deep_ling) => {
+    publicNotificationCustom: (tittle, body, deep_ling, interest) => {
 
-        beamsClient.publishToInterests(['ethernet-status'], {
+        beamsClient.publishToInterests([interest], {
             web: {
                 notification: {
                     title: tittle,
                     body: body,
-                    deep_link: ""+deep_ling,
+                    deep_link: "" + deep_ling,
                 }
             },
         });
